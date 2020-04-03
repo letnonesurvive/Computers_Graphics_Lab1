@@ -1,0 +1,11 @@
+C:\Users\neoga\source\repos\ComputerGraphicsLab\ComputerGraphicsLab\bin\Debug\ComputerGraphicsLab.exe.config
+C:\Users\neoga\source\repos\ComputerGraphicsLab\ComputerGraphicsLab\bin\Debug\ComputerGraphicsLab.exe
+C:\Users\neoga\source\repos\ComputerGraphicsLab\ComputerGraphicsLab\bin\Debug\ComputerGraphicsLab.pdb
+C:\Users\neoga\source\repos\ComputerGraphicsLab\ComputerGraphicsLab\obj\Debug\ComputerGraphicsLab.csprojAssemblyReference.cache
+C:\Users\neoga\source\repos\ComputerGraphicsLab\ComputerGraphicsLab\obj\Debug\ComputerGraphicsLab.Properties.Resources.resources
+C:\Users\neoga\source\repos\ComputerGraphicsLab\ComputerGraphicsLab\obj\Debug\ComputerGraphicsLab.csproj.GenerateResource.cache
+C:\Users\neoga\source\repos\ComputerGraphicsLab\ComputerGraphicsLab\obj\Debug\ComputerGraphicsLab.csproj.CoreCompileInputs.cache
+C:\Users\neoga\source\repos\ComputerGraphicsLab\ComputerGraphicsLab\obj\Debug\ComputerGraphicsLab.exe
+C:\Users\neoga\source\repos\ComputerGraphicsLab\ComputerGraphicsLab\obj\Debug\ComputerGraphicsLab.pdb
+C:\Users\neoga\source\repos\ComputerGraphicsLab\ComputerGraphicsLab\obj\Debug\ComputerGraphicsLab.Form1.resources
+C:\Users\neoga\source\repos\ComputerGraphicsLab\ComputerGraphicsLab\obj\Debug\ComputerGraphicsLab.Form2.resources
