@@ -14,10 +14,13 @@ namespace ComputerGraphicsLab
     {
         private Bitmap old_image;
         private Bitmap image;
+        //private Bitmap current_image;
 
         private int mWidth = 3;
         private int mHeight = 3;
-        private int[,] mMatrix = { { 1, 1, 1 }, { 1, 1, 1 }, { 1, 1, 1 } };
+        private int[,] mMatrix = { { 0, 1, 0 }, 
+                                   { 1, 1, 1 }, 
+                                   { 0, 1, 0 } };
         public Form1()
         {
             InitializeComponent();
@@ -38,6 +41,7 @@ namespace ComputerGraphicsLab
             {
                 image = new Bitmap(dialog.FileName);
                 old_image = image;
+                //current_image = image;
                 pictureBox1.Image = image;
                 pictureBox1.Refresh();
             }
@@ -638,7 +642,7 @@ namespace ComputerGraphicsLab
                 return finalRes;
             }
         }
-        class TopHat : Filters
+        class TopHat : Filters //tophat(src, element) = src – open(src, element)
         {
             private Bitmap openedImage;
 
@@ -652,7 +656,12 @@ namespace ComputerGraphicsLab
                 _kheight = h;
                 _kmatrix = k;
             }
-
+            public override Bitmap processImage(Bitmap img, BackgroundWorker bgWorker)
+            {
+                Opening of = new Opening(_kwidth, _kheight, _kmatrix);
+                openedImage = of.processImage(img, bgWorker);
+                return base.processImage(img, bgWorker);
+            }
             protected override Color calculateNewPixelColor(Bitmap img, int x, int y)
             {
                 Color color = openedImage.GetPixel(x, y);
@@ -660,17 +669,7 @@ namespace ComputerGraphicsLab
                 {
                     return Color.Black;
                 }
-
                 return img.GetPixel(x, y);
-            }
-
-
-            public override Bitmap processImage(Bitmap img, BackgroundWorker bgWorker)
-            {
-                Opening of = new Opening(_kwidth, _kheight, _kmatrix);
-                openedImage = of.processImage(img, bgWorker);
-
-                return base.processImage(img, bgWorker);
             }
         }
         private void PictureBox1_Click(object sender, EventArgs e)
@@ -702,104 +701,158 @@ namespace ComputerGraphicsLab
         }
         private void ИнверсияToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new InvertFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
         private void ОттенокСерогоToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new GrayScaleFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
         private void РазмытиеToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new BlurFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void РазмытиеПоГToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new GaussianFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
         private void СепияToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new SepiaFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void УвеличитьЯркостьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new BrightnessFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void ФильтрСобеляToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filterX = new SobelsFilter();
             backgroundWorker1.RunWorkerAsync(filterX);
         }
 
         private void РезкостьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new SharpnessFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void ТиснениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new Stamping();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void ДругаяРезкостьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new PrecisionFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void MotionBlurToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new MotionBlur(5);
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void ПереносToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new Shift(50, 0);
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void ПоворотНа90ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new Turn(Math.PI / 2);
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void Волны1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new Waves1();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void Волны2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new Waves2();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void СтеклоToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new Glass();
             backgroundWorker1.RunWorkerAsync(filter);
         }
         private void ОператорЩарраToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter1 = new Shara();
             backgroundWorker1.RunWorkerAsync(filter1);
         }
 
         private void ОператорПрюиттаToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter1 = new Pruitt();
             backgroundWorker1.RunWorkerAsync(filter1);
         }
@@ -807,56 +860,83 @@ namespace ComputerGraphicsLab
 
         private void МедианныйФильтрToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter1 = new MedianFilter();
             backgroundWorker1.RunWorkerAsync(filter1);
         }
 
         private void СерыйМирToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new GreyWorld();
             backgroundWorker1.RunWorkerAsync(filter);
         }
         private void ЛинейноеРастяжениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Filters filter = new LinearRastig();
             backgroundWorker1.RunWorkerAsync(filter);
+            
         }
         private void НазадToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //current_image = old_image;
             pictureBox1.Image = old_image;
         }
 
         private void ВпередToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //current_image = image;
             pictureBox1.Image = image;
         }
 
         private void РасширениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Dilation filter = new Dilation(mWidth, mHeight, mMatrix);
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void СужениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Erosion filter = new Erosion(mWidth, mHeight, mMatrix);
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void ОткрытиеToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Opening filter = new Opening(mWidth, mHeight, mMatrix);
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void ЗакрытиеToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             Closings filter = new Closings(mWidth, mHeight, mMatrix);
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void TopHatToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var bm = new Bitmap(pictureBox1.Image);
+            old_image = image;
+            image = bm;
             TopHat filter = new TopHat(mWidth, mHeight, mMatrix);
             backgroundWorker1.RunWorkerAsync(filter);
         }
